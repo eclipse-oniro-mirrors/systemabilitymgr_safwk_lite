@@ -10,46 +10,42 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import("//base/powermgr/powermgr_lite/services/config.gni")
 import("//build/lite/config/component/lite_component.gni")
 
 if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
-    lite_component("safwk_lite") {
-        features = [
-            ":foundation"
-        ]
+  lite_component("safwk_lite") {
+    features = [ ":foundation" ]
+  }
+
+  # feature: foundation
+  executable("foundation") {
+    cflags = [ "-Wall" ]
+    cflags_cc = cflags
+
+    sources = [ "src/main.c" ]
+
+    include_dirs = [
+      "//utils/native/lite/include",
+      "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
+    ]
+
+    ldflags = [
+      "-lstdc++",
+      "-Wl,-Map=foundation.map",
+    ]
+
+    deps = [
+      "${aafwk_lite_path}/services/abilitymgr_lite:abilityms",
+      "${appexecfwk_lite_path}/services/bundlemgr_lite:bundlems",
+      "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
+      "//base/security/permission/services/permission_lite/ipc_auth:ipc_auth_target",
+      "//base/security/permission/services/permission_lite/pms:pms_target",
+      "//foundation/distributedschedule/dmsfwk_lite:dtbschedmgr",
+      "//foundation/distributedschedule/samgr_lite/samgr_server:server",
+    ]
+    if (enable_screensaver == true) {
+      deps += [ "//base/powermgr/powermgr_lite/services:pmslite" ]
     }
-
-    # feature: foundation
-    executable("foundation") {
-        cflags = ["-Wall"]
-        cflags_cc = cflags
-
-        sources = [
-            "src/main.c",
-        ]
-
-        include_dirs = [
-            "//utils/native/lite/include",
-            "//foundation/distributedschedule/interfaces/kits/samgr_lite/samgr",
-        ]
-
-        ldflags = [
-            "-lstdc++",
-            "-Wl,-Map=foundation.map",
-        ]
-
-        deps = [
-            "//foundation/distributedschedule/services/samgr_lite/samgr_server:server",
-            "//base/hiviewdfx/frameworks/hilog_lite/featured:hilog_shared",
-            "//base/security/services/iam_lite/ipc_auth:ipc_auth_target",
-        ]
-        if (ohos_kernel_type == "liteos_a") {
-            deps += [
-                "//base/security/services/iam_lite/pms:pms_target",
-                "//foundation/aafwk/services/abilitymgr_lite:abilityms",
-                "//foundation/appexecfwk/services/bundlemgr_lite:bundlems",
-                "//foundation/distributedschedule/services/dtbschedmgr_lite:dtbschedmgr",
-            ]
-        }
-    }
+  }
 }

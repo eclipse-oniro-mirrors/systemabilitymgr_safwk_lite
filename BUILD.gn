@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import("//base/powermgr/powermgr_lite/services/config.gni")
+import("//base/update/dupdate/services/timertask_lite/config.gni")
 import("//build/lite/config/component/lite_component.gni")
 
 if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
@@ -46,6 +47,9 @@ if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
     ]
     if (enable_screensaver == true) {
       deps += [ "//base/powermgr/powermgr_lite/services:pmslite" ]
+    }
+    if (enable_timertask == true) {
+      deps += [ "//base/update/dupdate/services/timertask_lite:timertask" ]
     }
   }
 }

@@ -13,6 +13,10 @@
 import("//base/powermgr/powermgr_lite/services/config.gni")
 import("//build/lite/config/component/lite_component.gni")
 
+declare_args() {
+  enable_timertask = false
+}
+
 if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
   lite_component("safwk_lite") {
     features = [ ":foundation" ]
@@ -46,6 +50,9 @@ if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
     ]
     if (enable_screensaver == true) {
       deps += [ "//base/powermgr/powermgr_lite/services:pmslite" ]
+    }
+    if (enable_timertask == true) {
+      deps += [ "//base/update/dupdate/services/timertask_lite:timertask" ]
     }
   }
 }

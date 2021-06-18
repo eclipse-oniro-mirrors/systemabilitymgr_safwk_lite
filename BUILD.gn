@@ -10,7 +10,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//base/powermgr/powermgr_lite/services/config.gni")
+
 import("//build/lite/config/component/lite_component.gni")
 
 declare_args() {
@@ -47,10 +47,8 @@ if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
       "//base/security/permission/services/permission_lite/pms:pms_target",
       "//foundation/distributedschedule/dmsfwk_lite:dtbschedmgr",
       "//foundation/distributedschedule/samgr_lite/samgr_server:server",
+      "//base/powermgr/powermgr_lite:powermgr_lite",
     ]
-    if (enable_screensaver == true) {
-      deps += [ "//base/powermgr/powermgr_lite/services:pmslite" ]
-    }
     if (enable_timertask == true) {
       deps += [ "//base/update/dupdate/services/timertask_lite:timertask" ]
     }

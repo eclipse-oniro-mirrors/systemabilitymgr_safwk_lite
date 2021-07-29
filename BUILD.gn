@@ -48,6 +48,7 @@ if (ohos_kernel_type == "liteos_a" || ohos_kernel_type == "linux") {
       "//foundation/distributedschedule/dmsfwk_lite:dtbschedmgr",
       "//foundation/distributedschedule/samgr_lite/samgr_server:server",
       "//base/powermgr/powermgr_lite:powermgr_lite",
+      "//base/powermgr/battery_lite:batterymgr_lite",
     ]
     if (enable_timertask == true) {
       deps += [ "//base/update/dupdate/services/timertask_lite:timertask" ]

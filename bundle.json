@@ -1,0 +1,58 @@
+{
+    "name": "@ohos/distributedschedule_safwk_lite",
+    "version": "",
+    "description": "提供系统服务的生命周期管理能力",
+    "homePage": "https://gitee.com/openharmony",
+    "license": "Apache V2",
+    "repository": "https://gitee.com/openharmony/distributedschedule_safwk_lite",
+    "domain": "os",
+    "language": "",
+    "publishAs": "code-segment",
+    "private": false,
+    "scripts": {},
+    "tags": [
+        "foundation"
+    ],
+    "keywords": [
+        "distributedschedule",
+        "safwk",
+        "lite"
+    ],
+    "envs": [],
+    "dirs": [],
+    "author": {
+        "name": "",
+        "email": "",
+        "url": ""
+    },
+    "contributors": [
+        {
+            "name": "",
+            "email": "",
+            "url": ""
+        }
+    ],
+    "segment": {
+        "destPath": "foundation/distributedschedule/safwk_lite"
+    },
+    "component": {
+        "name": "safwk_lite",
+        "subsystem": "distributedschedule",
+        "syscap": [],
+        "features": [],
+        "adated_system_type": [
+            "min"
+        ],
+        "rom": "",
+        "ram": "",
+        "deps": {
+            "components": [],
+            "third_party": []
+        },
+        "build": {
+            "sub_component": [],
+            "inner_kits": [],
+            "test": []
+        }
+    }
+}
